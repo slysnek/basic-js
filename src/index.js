@@ -1,27 +1,19 @@
-function encodeLine(str) {
-    let currentLetter;
-    let stringArray = [];
-    let count = 0;
-    for (let i = 0; i <= str.length; i++) {
-      if(i !== 0){
-        if(str[i] === str[i-1]){
-            count++;
-          }
-          if(str[i] !== str[i-1]){
-            if(count > 1){
-              stringArray.push(count);
-            }
-            stringArray.push(str[i-1]);
-            count = 0;
-            count++
-          }
-      } else {
-        currentLetter = str[i];
-        count++;
-      }
+function getDNSStats(domains) {
+    let changedDomains = []
+    for (const domain in domains) {
+        let newEL = domains[domain].split('.')
+        newEL.reverse();
+        changedDomains.push(newEL)
     }
-    return stringArray.join('')
-  }
+    let domainCount = {}
+    console.log(changedDomains);
+    for (let arr of changedDomains){
+        for(let word of arr){
+            domainCount[word] = 0;
+        }
+    }
+    console.log(domainCount);
+}
 
-let result = encodeLine('aaaatttt')
+let result = getDNSStats(['code.yandex.ru', 'music.yandex.ru', 'yandex.ru'])
 console.log(result);

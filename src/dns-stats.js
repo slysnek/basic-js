@@ -24,7 +24,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function getDNSStats(domains) {
   array.forEach(element => {
-    
+    element.split('').unshift('.').join('').split('.');
   });
 }
 
