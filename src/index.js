@@ -1,18 +1,22 @@
-function deleteDigit(num) {
-    let stringNum = num.toString();
-    let modified = [];
-    let compareValue = 0;
-    for (let i = 0; i < stringNum.length; i++) {
-      let numArray = num.toString().split('')
-      let modifiedNum = numArray.splice(i, 1);
-      console.log(modifiedNum);
-      if(modifiedNum > compareValue){
-        compareValue = modifiedNum;
+function createDreamTeam(members) {
+    let letters = []
+    members.forEach(element => {
+      if(typeof element === 'string'){
+        letters.push(element.slice(0,1).toUpperCase())
+        console.log(element);
+        console.log(letters);
       }
-      console.log(compareValue);
-    }
-    return compareValue;
+    });
+    return letters.sort(function(a,b){
+      if (a < b) {
+        return -1;
+      }
+      if (a > b) {
+        return 1;
+      }
+      return 0;
+    }).join('')
   }
 
-let result = deleteDigit(152)
+let result = createDreamTeam(['Matt', 'Ann', 'Dmitry', 'Max'])
 console.log(result);
