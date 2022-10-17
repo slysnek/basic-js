@@ -1,35 +1,15 @@
-function getDNSStats(domains) {
-
-    let changedDomains = []
-    for (const domain in domains) {
-        let newEL = domains[domain].split('.')
-        newEL.reverse();
-        changedDomains.push(newEL)
-    }
-
-    let domainCount = {}
-
-    console.log(changedDomains);
-
-
-    for (let arr of changedDomains){
-      let domain = ''
-      for(let word of arr){
-        domain += '.' + word;
-        if(domainCount[domain]){
-          domainCount[domain]+=1;
-        }else{
-          domainCount[domain] = 1;
+function renameFiles(names) {
+  for (let i = 0; i < names.length; i++) {
+    for (let k = 0; k < names.length; k++) {
+      if(!(i === k )){
+        if(names[i]===names[k]){
+          names[i]+="(1)"
         }
+      }
     }
-/*         for(let word of arr){
-            domainCount[word] = 0;
-        } */
-    }
-    console.log(domainCount);
-
-
+  }
+  return names
 }
 
-let result = getDNSStats(['code.yandex.ru', 'music.yandex.ru', 'yandex.ru'])
+let result = renameFiles(['doc', 'doc', 'image', 'doc(1)', 'doc'])
 console.log(result);
