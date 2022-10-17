@@ -1,14 +1,16 @@
-function getSumOfDigits(num) {
-  if(num.toString().length === 1){
-    return num
-  } else{
-    let numArr = num.toString().split('');
-    let result = numArr.reduce((total, el) => {
-      return total + parseInt(el);
-    }, 0)
-    return getSumOfDigits(result)
+class DepthCalculator {
+  calculateDepth(array, count = 1) {
+    if (array.some(function(element) {
+      return Array.isArray(element);
+    })) {
+      count++;
+      return this.calculateDepth(array.flat(1), count);
+    }
+    return count;
   }
 }
 
-let result = getSumOfDigits(10)
+
+let b = new DepthCalculator;
+let result = b.calculateDepth([1,2,3,4,5,[]])
 console.log(result);
